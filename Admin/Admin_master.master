@@ -1,0 +1,117 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin_master.master.cs" Inherits="Admin_Admin_master" %>
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>E-LEARNING</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">E-</a>LEARNING</h1>
+          <h2>keep learning.</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="index.html">Home</a></li>
+          <li><a href="Admin_members.aspx">members</a></li>
+          <li><a href="Add_course.aspx">add course</a></li>
+          <li><a href="File_upload.aspx">upload</a></li>
+            <li><a href="admin_view_message.aspx">view message</a></li>
+              
+          <li><a href="../Logout.aspx">logout</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+      <form runat="server">
+          <asp:ImageButton ID="ImageButton2" runat="server" Width="100" Height="100" ImageUrl="~/Admin/style/306473.png" /><br />
+         &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;<asp:Label ID="Label2" runat="server" Text="Label">Admin</asp:Label>
+          <br />
+          <br />
+                  Search Member<p>
+              <asp:TextBox class="search" ID="txtsearch" runat="server" OnTextChanged="TextBox1_TextChanged" Height="18px" Width="100px"></asp:TextBox>
+              <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Admin/search.png" OnClick="ImageButton1_Click" />
+&nbsp;</p>
+              <asp:Panel ID="Panel1" runat="server" Height="724px" Width="148px">
+                  <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                  <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1" Height="64px" Width="63px">
+                      <ItemTemplate>
+                          name:
+                          <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
+                          <br />
+                          dob:
+                          <asp:Label ID="dobLabel" runat="server" Text='<%# Eval("dob") %>' />
+                          <br />
+                          address:
+                          <asp:Label ID="addressLabel" runat="server" Text='<%# Eval("address") %>' />
+                          <br />
+                          phone:
+                          <asp:Label ID="phoneLabel" runat="server" Text='<%# Eval("phone") %>' />
+                          <br />
+                          username:
+                          <asp:Label ID="usernameLabel" runat="server" Text='<%# Eval("username") %>' />
+                          <br />
+                          <br />
+                      </ItemTemplate>
+                  </asp:DataList>
+                  <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:elearning_dbConnectionString %>" SelectCommand="SELECT [name], [dob], [address], [phone], [username] FROM [reg_tb] WHERE ([name] = @name)">
+                      <SelectParameters>
+                          <asp:ControlParameter ControlID="txtsearch" Name="name" PropertyName="Text" Type="String" />
+                      </SelectParameters>
+                  </asp:SqlDataSource>
+              </asp:Panel>
+          
+
+      </div>
+         <div id="content">
+          <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                
+                 </asp:ContentPlaceHolder>
+        <!-- insert the page content here -->
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+      </div>
+    </div>
+     <div></div>
+    <div id="content_footer"></div>
+    <div id="footer">
+    </div>
+  </div>
+    </form>
+</body>
+</html>

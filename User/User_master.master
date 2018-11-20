@@ -1,0 +1,77 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="User_master.master.cs" Inherits="User_User_master" %>
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>E-LEARNING</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
+</head>
+
+<body>
+    <form id="form1" runat="server">
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">E-<span class="logo_colour">LEARNING</span></a></h1>
+          <h2>Keep Learning.</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="user_home.aspx">Home</a></li>
+            <li><a href="user_profile.aspx">Profile</a></li>
+          <li><a href="course_classes.aspx">Classes</a></li>
+          <li><a href="user_Send_message.aspx">Send message</a></li>
+           <li><a href="user_view_reply.aspx">view message</a></li>
+          <li><a href="../Logout.aspx">logout</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        
+          
+          <asp:Image ID="Image1" runat="server" ImageUrl="~/User/style/persona2.png" Height="100" Width="100" />
+                 &nbsp;  <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" CellPadding="3" GridLines="Horizontal" ShowFooter="False" ShowHeader="False">
+                       <AlternatingItemStyle BackColor="#F7F7F7" />
+              <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+              <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+                       <ItemStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+              <ItemTemplate>
+                 
+                  <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
+                  <br />
+<br />
+              </ItemTemplate>
+              <SelectedItemStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+          </asp:DataList>
+          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:elearning_dbConnectionString %>" SelectCommand="SELECT [name] FROM [reg_tb] WHERE ([username] = @username)">
+              <SelectParameters>
+                  <asp:SessionParameter Name="username" SessionField="username" Type="String" />
+              </SelectParameters>
+          </asp:SqlDataSource>
+        
+      </div>
+      <div id="content">
+          <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                
+                 </asp:ContentPlaceHolder>
+        <!-- insert the page content here -->
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+    </div>
+  </div>
+    </form>
+</body>
+</html>
+
